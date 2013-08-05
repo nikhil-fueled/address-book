@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Address Book</title>
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+        <script src="js/scripts.js"></script>
+    </head>
+    <body>
+    <div id="top">
+            <div id= "PersonData">
+                <h1>Person Data</h1>
+                <form id="PersonData" onsubmit="verifyPerson()">
+                 <p>      Name <input name="name" id="name" type="text"/><br/>
+                      Address <input name="address" id="address" type="text"/>
+                      <button>Submit</button>
+                  </p>
+                  </form>
+            </div>
+            <div id= "query">
+                <h1>Query</h1>
+                <form id="query-form" onsubmit="">
+                   <p>Search Query <input name="search" id="search" type="text"/>
+                    <button id="buttonS" value="search button" onclick="verifySearch('search')">Search</button>
+                   <br/>
+                  Delete Query <input name="delete" id="delete" type="text"/>
+                <button id="buttonD" onclick="verifySearch('delete')">Delete</button>
+                   <br/></p>
+                  </form>
+            </div>
+            <div id= "sort">
+                <h1>Sort</h1>
+                <form id="sort-form" onsubmit="sortform()">
+                   Sort by Name <input name="s_option" id="s_name" type="radio"/><br/>
+                  Sort by Address<input name="s_option" id="s_address" type="radio"/>
+                  <button>Sort</button>
+                  </form>
+            </div>
+        </div>
+        <div id="main">
+            <fieldset>
+                    <legend>Address Book</legend>
+                    <article></article>
+            </fieldset>
+            <fieldset>
+                <legend>Search Result</legend>
+                <article>sdfs</article>
+            </fieldset>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+    </body>
+
+</html>
