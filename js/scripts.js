@@ -85,9 +85,11 @@ function loadTodoItems(tx, rs) {
 
 function search(renderFunc){
   var name= $("#search").val();
+  name="%".concat(name, "%");
   var db= html5rocks.webdb.db;
   db.transaction(function(tx){
-      tx.executeSql("Select * from Person where Name=(?)",[name], renderFunc, html5rocks.webdb.onError);
+      tx.executeSql("Select * from Person where Name LIKE (?)",[name], renderFunc, html5rocks.webdb.onError);
+      tx.executeSql("Select * from Person where Address LIKE (?)",[name], renderFunc, html5rocks.webdb.onError);
   });
 
  }
