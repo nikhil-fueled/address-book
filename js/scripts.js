@@ -54,7 +54,6 @@ function init(){
   html5rocks.webdb.getAllPerson(loadTodoItems);
 }
 function addPerson(){
-  alert($("#name").val());
   html5rocks.webdb.addPerson($("#name").val(), $("#address").val());
   $("#name").val()=""; $("#.address").val()="";
 }
@@ -71,8 +70,6 @@ function loadTodoItems(tx, rs) {
         todoItems.innerHTML = rowOutput;
   }
   function loadSearchItems(tx, rs) {
-
-          alert("loading search");
           var rowOutput = "";
           var todoItems = document.getElementById("searchList");
 
