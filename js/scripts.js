@@ -29,7 +29,20 @@ html5rocks.webdb.getAllPerson = function(renderFunc) {
     tx.executeSql("SELECT * FROM Person", [], renderFunc,
         html5rocks.webdb.onError);
   });
-
+}
+html5rocks.webdb.getAllPersonSortName = function(renderFunc) {
+  var db = html5rocks.webdb.db;
+  db.transaction(function(tx) {
+    tx.executeSql("SELECT * FROM Person Order By Name", [], renderFunc,
+        html5rocks.webdb.onError);
+  });
+}
+html5rocks.webdb.getAllPersonSortAddress = function(renderFunc) {
+  var db = html5rocks.webdb.db;
+  db.transaction(function(tx) {
+    tx.executeSql("SELECT * FROM Person Order By Address", [], renderFunc,
+        html5rocks.webdb.onError);
+  });
 }
 html5rocks.webdb.addPerson= function(personName, address){
     var db= html5rocks.webdb.db;
@@ -81,8 +94,13 @@ function search(renderFunc){
   });
 
  }
-
-
+function remove(){
+  var name=$("#delete").val();
+  var db= html5rocks.webdb.db;
+  db.transaction(function(tx){
+      tx.executeSql("Delete from Person where Name=(?)",[name], html5rocks.webdb.onSuccess, html5rocks.webdb.onError);
+  });
+}
 
 
 
@@ -111,10 +129,17 @@ function verifySearch(cmd){
             alert("incomplete form");
             return;
         }
+        remove();
     }
 }
 
 function sortform(){
-
-    alert("abc d");
+   var name= document.getElementById("s_name");
+   var address= document.getElementById("s_address");
+   if(name.checked){
+      html5rocks.webdb.getAllPersonSortName(loadTodoItems);
+   }
+   if(address.checked){
+         html5rocks.webdb.getAllPersonSortAddress(loadTodoItems);
+      }
 }

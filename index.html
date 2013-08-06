@@ -18,20 +18,19 @@
             <div id= "query">
                 <h1>Query</h1>
                    <p>Search Query <input name="search" id="search" type="text"/>
-                    <button id="buttonS" value="search button" onclick="verifySearch('search')">Search</button>
-                   <br/>
-                  Delete Query <input name="delete" id="delete" type="text"/>
-                <button id="buttonD" onclick="verifySearch('delete')">Delete</button>
-                   <br/></p>
+                        <button id="buttonS" value="search button" onclick="verifySearch('search')">Search</button>
+                         <br/>
+                      Delete Query <input name="delete" id="delete" type="text"/>
+                        <button id="buttonD" onclick="verifySearch('delete')">Delete</button>
+                       <br/>
+                 </p>
 
             </div>
             <div id= "sort">
                 <h1>Sort</h1>
-                <form id="sort-form" onsubmit="sortform()">
-                   Sort by Name <input name="s_option" value="s_name" type="radio"/><br/>
-                  Sort by Address<input name="s_option" value="s_address" type="radio"/>
-                  <button>Sort</button>
-                  </form>
+                   Sort by Name <input name="s_option" id="s_name" value="s_name" type="radio"/><br/>
+                  Sort by Address<input name="s_option" id="s_address" value="s_address" type="radio"/>
+                  <button onclick="sortform()">Sort</button>
             </div>
         </div>
         <div id="main">
