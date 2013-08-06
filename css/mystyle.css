@@ -38,3 +38,7 @@ fieldset{
     border-style: solid;
     border-width:1px;
 }
+td{
+    width:80px;
+    text-align: center;
+}
