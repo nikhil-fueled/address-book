@@ -1,4 +1,3 @@
-
 var html5rocks = {};
 html5rocks.webdb = {};
 html5rocks.webdb.db = null;
@@ -136,7 +135,7 @@ function sortform(){
    if(name.checked){
       html5rocks.webdb.getAllPersonSortName(loadTodoItems);
    }
-   f(address.checked){
+   if(address.checked){
          html5rocks.webdb.getAllPersonSortAddress(loadTodoItems);
       }
 }
