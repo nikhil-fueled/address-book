@@ -58,7 +58,8 @@ function addPerson(){
   $("#name").val()=""; $("#.address").val()="";
 }
 function renderTodo(row) {
-  return "<tr><td>" + row.Name +"</td><td>"+ row.Address+"</td></tr>";
+  return "<tr><td>" + row.Name +"</td><td>"+ row.Address+"</td><td>"+" [<a href='javascript:void(0);' onclick='remove(" +
+         row.ID +");'>Delete</a>]</td></tr>";
 }
 function loadTodoItems(tx, rs) {
         var rowOutput = "";
@@ -77,7 +78,7 @@ function loadTodoItems(tx, rs) {
             rowOutput += renderTodo(rs.rows.item(i));
           }
 
-          todoItems.innerHTML = rowOutput;
+          todoItems.innerHTML = todoItems.innerHTML+ rowOutput;
           return;
     }
 
@@ -87,18 +88,21 @@ function search(renderFunc){
   var name= $("#search").val();
   name="%".concat(name, "%");
   var db= html5rocks.webdb.db;
+  var todoItems = document.getElementById("searchList");
+  todoItems.innerHTML="";
   db.transaction(function(tx){
       tx.executeSql("Select * from Person where Name LIKE (?)",[name], renderFunc, html5rocks.webdb.onError);
       tx.executeSql("Select * from Person where Address LIKE (?)",[name], renderFunc, html5rocks.webdb.onError);
   });
 
  }
-function remove(){
-  var name=$("#delete").val();
+
+function remove(name){
   var db= html5rocks.webdb.db;
   db.transaction(function(tx){
-      tx.executeSql("Delete from Person where Name=(?)",[name], html5rocks.webdb.onSuccess, html5rocks.webdb.onError);
+      tx.executeSql("Delete from Person where ID=(?)",[name], html5rocks.webdb.onSuccess, html5rocks.webdb.onError);
   });
+  window.location.reload();
 }
 
 
