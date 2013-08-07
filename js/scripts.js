@@ -1,4 +1,3 @@
-
 var html5rocks = {};
 html5rocks.webdb = {};
 html5rocks.webdb.db = null;
